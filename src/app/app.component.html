@@ -1,15 +1,9 @@
-<form [formGroup]="usersForm" (ngSubmit)="onSubmit()">
+<div>
+  <a routerLink="/check">Checkbox test component</a>
+  <br>
+  <br>
+  <a routerLink="/form">Form test component</a>
+</div>
 
-  <div formArrayName="permissions">
 
-    <div *ngFor="let permissions of permissions.controls; let i=index">
-      <!-- The repeated alias template -->
-      <label>
-        Alias:
-        <input type="text" [formControlName]="i">
-      </label>
-    </div>
-  </div>
-
-  <button type="submit">console log form value</button>
-</form>
+<router-outlet></router-outlet>
