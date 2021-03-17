@@ -1,0 +1,24 @@
+[
+  {
+    "name": "damtom",
+    "completed": true,
+    "childPermission": [
+      {
+        "name": "damtom-create",
+        "completed": true
+      },
+      {
+        "name": "damtom-update",
+        "completed": false
+      },
+      {
+        "name": "damtom-delete",
+        "completed": true
+      }
+    ]
+  },
+  {
+    "name": "role",
+    "completed": true
+  }
+]
