@@ -23,21 +23,21 @@ export class CheckComponent  {
     ]
   };
 
-  allComplete: boolean = false;
+  // allComplete: boolean = false;
 
-  updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
-  }
+  // updateAllComplete() {
+  //   this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+  // }
 
-  someComplete(): boolean {
-    if (this.task.subtasks == null) {
-      return false;
-    }
-    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
-  }
+  // someComplete(): boolean {
+  //   if (this.task.subtasks == null) {
+  //     return false;
+  //   }
+  //   return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+  // }
 
   setAll(completed: boolean) {
-    this.allComplete = completed;
+    // this.allComplete = completed;
     if (this.task.subtasks == null) {
       return;
     }
