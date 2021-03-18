@@ -2,7 +2,7 @@
   {
     "name": "damtom",
     "completed": true,
-    "childPermission": [
+    "child": [
       {
         "name": "damtom-create",
         "completed": true
