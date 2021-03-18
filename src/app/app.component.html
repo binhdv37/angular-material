@@ -1,9 +1,6 @@
-<div>
-  <a routerLink="/check">Checkbox test component</a>
-  <br>
-  <br>
-  <a routerLink="/form">Form test component</a>
-</div>
+<h2>app component</h2>
+<br><br>
+<hr>
+<br><br>
 
-
-<router-outlet></router-outlet>
+<app-check [permission]="this.permission" (quyenEmitter)="doSomething($event)"></app-check>

@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {CheckComponent} from './check/check.component';
 import {FormComponent} from './form/form.component';
+import {Form2Component} from './form2/form2.component';
 
 const routes: Routes = [
-  {path: 'form', component: FormComponent},
-  {path: 'check', component: CheckComponent}
 ];
 
 @NgModule({

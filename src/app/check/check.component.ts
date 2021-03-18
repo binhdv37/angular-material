@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 
-export interface Task {
+export interface Permission {
   name: string;
   completed: boolean;
-  subtasks?: Task[];
+  child?: Permission[];
 }
 
 @Component({
@@ -11,37 +11,66 @@ export interface Task {
   templateUrl: './check.component.html',
   styleUrls: ['./check.component.css']
 })
-export class CheckComponent  {
+export class CheckComponent implements OnInit{
 
-  task: Task = {
-    name: 'Indeterminate',
-    completed: false,
-    subtasks: [
-      {name: 'Primary', completed: false},
-      {name: 'Accent', completed: false},
-      {name: 'Warn', completed: false}
-    ]
-  };
+  // danh sach quyen nhan vao
+  @Input() permission: Permission;
 
-  allComplete: boolean = false;
+  // array quyen emit len
+  @Output() quyenEmitter = new EventEmitter<string[]>();
 
-  updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
-  }
+  quyen: string[] = [];
 
-  someComplete(): boolean {
-    if (this.task.subtasks == null) {
-      return false;
+  ngOnInit(): void {
+    // khoi tao gia tri cho quyen
+    if (this.permission.completed === true) { this.quyen.push(this.permission.name); }
+    if (this.permission.child !== null) {
+      this.permission.child.forEach( p => {
+        if (p.completed === true) { this.quyen.push(p.name); }
+      });
     }
-    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
   }
 
+  // update quyen khi user click node cha
   setAll(completed: boolean) {
-    this.allComplete = completed;
-    if (this.task.subtasks == null) {
+    if (this.permission.child == null) {
       return;
     }
-    this.task.subtasks.forEach(t => t.completed = completed);
+    this.permission.child.forEach(t => t.completed = completed);
+    if (completed === true) { this.addAll(); }
+    else { this.removeAll(); }
+
+    // emit data
+    this.emitData();
   }
+
+  // update quyen khi user click node con
+  updateArr(completed: boolean, value){
+    if (completed === true) { this.quyen.push(value); }
+    else{
+      this.quyen = this.quyen.filter(x => x !== value);
+    }
+    this.emitData();
+  }
+
+  // theem tat ca quyen
+  addAll(){
+    this.removeAll();
+    this.quyen.push(this.permission.name);
+    if (this.permission.child !== null) {
+      this.permission.child.forEach( c => this.quyen.push(c.name));
+    }
+  }
+
+  // xoa tat ca quyen
+  removeAll(){
+    this.quyen = [];
+  }
+
+  // emit quyen to parent component
+  emitData(){
+    this.quyenEmitter.emit(this.quyen);
+  }
+
 
 }

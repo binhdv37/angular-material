@@ -1,0 +1,37 @@
+{
+  "permissions": [
+    {
+      "name": "damtom",
+      "child": [
+        {
+          "name": "damtom_create"
+        },
+        {
+          "name": "damtom_update"
+        },
+        {
+          "name": "damtom_delete"
+        }
+      ]
+    },
+    {
+      "name": "role"
+    },
+    {
+      "name": "baocao",
+      "child": [
+        {
+          "name": "baocao_canhbao"
+        },
+        {
+          "name": "baocao_tonghop"
+        }
+      ]
+    }
+  ],
+  "granted": [
+    "damtom",
+    "baocao_canhbao",
+    "damtom_update"
+  ]
+}

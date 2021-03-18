@@ -30,12 +30,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CheckComponent } from './check/check.component';
 import { FormComponent } from './form/form.component';
+import { Form2Component } from './form2/form2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckComponent,
-    FormComponent
+    FormComponent,
+    Form2Component
   ],
   imports: [
     BrowserModule,

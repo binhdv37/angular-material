@@ -1,13 +1,13 @@
 <section class="example-section">
 
-  <!-- nut cha -->
+  <!-- node cha -->
   <span class="example-list-section">
     <mat-checkbox class="example-margin"
-                  [checked]="allComplete"
                   color="primary"
-                  [indeterminate]="someComplete()"
+                  [value]="permission.name"
+                  [(ngModel)]="permission.completed"
                   (change)="setAll($event.checked)">
-      {{task.name}}
+      {{permission.name}}
     </mat-checkbox>
   </span>
 
@@ -15,14 +15,18 @@
   <!-- node con -->
   <span class="example-list-section">
     <ul>
-      <li *ngFor="let subtask of task.subtasks">
-        <mat-checkbox [(ngModel)]="subtask.completed"
+      <li *ngFor="let child of permission.child">
+        <mat-checkbox [(ngModel)]="child.completed"
                       color="primary"
-                      (ngModelChange)="updateAllComplete()">
-          {{subtask.name}}
+                      [value]="child.name"
+                      (change)="updateArr($event.checked, $event.source.value)"
+        >
+          {{child.name}}
         </mat-checkbox>
       </li>
     </ul>
   </span>
 
 </section>
+
+<button (click)="emitData()">console log</button>
