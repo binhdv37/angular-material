@@ -3,4 +3,7 @@
 <hr>
 <br><br>
 
-<app-check [permission]="this.permission" (quyenEmitter)="doSomething($event)"></app-check>
+<ng-container *ngFor="let p of initPermissions">
+  <app-check [permission]="p" (quyenEmitter)="updateCheckedKeys($event)"></app-check>
+</ng-container>
+

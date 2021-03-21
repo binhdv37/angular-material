@@ -13,13 +13,13 @@
 
 
   <!-- node con -->
-  <span class="example-list-section">
+  <span class="example-list-section" *ngIf="permission.child !== null && permission.child !== undefined">
     <ul>
       <li *ngFor="let child of permission.child">
         <mat-checkbox [(ngModel)]="child.completed"
                       color="primary"
                       [value]="child.name"
-                      (change)="updateArr($event.checked, $event.source.value)"
+                      (change)="emitData($event.source.value)"
         >
           {{child.name}}
         </mat-checkbox>
@@ -29,4 +29,3 @@
 
 </section>
 
-<button (click)="emitData()">console log</button>
